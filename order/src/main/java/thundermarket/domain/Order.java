@@ -64,6 +64,10 @@ public class Order  {
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
 
+    
+    }
+    @PreUpdate
+    public void onPreUpdate(){
 
 
         OrderCanceld orderCanceld = new OrderCanceld(this);
