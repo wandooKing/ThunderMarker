@@ -30,7 +30,8 @@ public class CheckStockViewHandler {
             checkStock.setId(orderPlaced.getProductId());
             checkStock.setOrderId(orderPlaced.getId());
             checkStock.setProductName(orderPlaced.getProductName());
-            checkStock.setProductName(orderPlaced.getProductName());
+            checkStock.setQty(71);
+            checkStock.setQty(71);
             // view 레파지 토리에 save
             checkStockRepository.save(checkStock);
         } catch (Exception e) {
@@ -51,7 +52,7 @@ public class CheckStockViewHandler {
             );
             for (CheckStock checkStock : checkStockList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                checkStock.setQty(stockDecreased.getStock());
+                checkStock.setQty(13);
                 // view 레파지 토리에 save
                 checkStockRepository.save(checkStock);
             }
