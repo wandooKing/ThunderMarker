@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "product", url = "${api.url.product}")
 public interface CheckStockService {
-    @GetMapping(path = "/checkStocks")
-    public List<CheckStock> getCheckStock();
+    // @GetMapping(path = "/checkStocks")
+    // public List<CheckStock> getCheckStock();
 
-    @GetMapping(path = "/checkStocks/{id}")
-    public CheckStock getCheckStock(@PathVariable("id") Long id);
+    // @GetMapping(path = "/checkStocks/{id}")
+    // public CheckStock getCheckStock(@PathVariable("id") Long id);
 }

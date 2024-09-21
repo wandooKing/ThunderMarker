@@ -29,7 +29,7 @@ public class CheckStockViewHandler {
             // view 객체에 이벤트의 Value 를 set 함
             checkStock.setProductId(productAdded.getId());
             checkStock.setQty(1);
-            checkStock.setPrice(100, 000, 000);
+            checkStock.setPrice(10000);
             checkStock.setProductName(productAdded.getProductName());
             // view 레파지 토리에 save
             checkStockRepository.save(checkStock);
