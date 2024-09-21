@@ -112,7 +112,21 @@ public static void updateStatus(OutOfStock outOfStock) {
         repository().save(order);
     });
 
-}
+
+        /** Example 2:  finding and process
+        
+        repository().findById(outOfStock.get???()).ifPresent(order->{
+            
+            order // do something
+            repository().save(order);
+
+            OrderCanceld orderCanceld = new OrderCanceld(order);
+            orderCanceld.publishAfterCommit();
+
+         });
+        */
+
+    }
 //>>> Clean Arch / Port Method
 
 
