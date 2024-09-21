@@ -81,28 +81,18 @@ public class Delivery {
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void cancelDelivery(OrderCanceld orderCanceld) {
-        //implement business logic here:
 
-        /** Example 1:  new item 
         Delivery delivery = new Delivery();
+        delivery.setOrderId(orderCanceld.getId());
+        delivery.setProductId(orderCanceld.getProductId());
+        delivery.setProductName(orderCanceld.getProductName());
+        delivery.setQty(orderCanceld.getQty());
+        delivery.setStatus("DeliveryCanceld");
+        
         repository().save(delivery);
-
+        
         DeliveryFailed deliveryFailed = new DeliveryFailed(delivery);
         deliveryFailed.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(orderCanceld.get???()).ifPresent(delivery->{
-            
-            delivery // do something
-            repository().save(delivery);
-
-            DeliveryFailed deliveryFailed = new DeliveryFailed(delivery);
-            deliveryFailed.publishAfterCommit();
-
-         });
-        */
 
     }
     //>>> Clean Arch / Port Method
