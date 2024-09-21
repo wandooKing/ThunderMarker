@@ -26,7 +26,6 @@
                 { text: "qty", value: "qty" },
                 { text: "productName", value: "productName" },
                 { text: "orderId", value: "orderId" },
-                { text: "orderId", value: "orderId" },
             ],
             checkStock : [],
         }),
