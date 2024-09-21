@@ -26,7 +26,6 @@
                 { text: "productName", value: "productName" },
                 { text: "orderStatus", value: "orderStatus" },
                 { text: "orderId", value: "orderId" },
-                { text: "orderStatus", value: "orderStatus" },
             ],
             myPage : [],
         }),

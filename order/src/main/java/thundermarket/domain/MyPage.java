@@ -20,5 +20,4 @@ public class MyPage {
     private String productName;
     private String orderStatus;
     private String orderId;
-    private String orderStatus;
 }
