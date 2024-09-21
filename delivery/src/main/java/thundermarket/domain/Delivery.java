@@ -87,7 +87,12 @@ public class Delivery {
         delivery.setProductId(orderCanceld.getProductId());
         delivery.setProductName(orderCanceld.getProductName());
         delivery.setQty(orderCanceld.getQty());
-        delivery.setStatus("DeliveryCanceld");
+
+        if(orderCanceld.getStatus().equals("OutofStock")){
+            delivery.setStatus("DeliveryCanceldbyOutofStock");
+        }else{
+            delivery.setStatus("DeliveryCanceldbyOrderCancel");
+        }
         
         repository().save(delivery);
         

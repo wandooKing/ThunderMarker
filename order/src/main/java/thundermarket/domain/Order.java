@@ -59,21 +59,17 @@ public class Order  {
 
     @PostPersist
     public void onPostPersist(){
-
-
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
 
-    
+        
     }
+
     @PreUpdate
     public void onPreUpdate(){
-
-
-        // OrderCanceld orderCanceld = new OrderCanceld(this);
-        // orderCanceld.publishAfterCommit();
-
-    
+        OrderCanceld orderCanceld = new OrderCanceld(this);
+        orderCanceld.setStatus("OutofStock");
+        orderCanceld.publishAfterCommit();  
     }
 
     public static OrderRepository repository(){
@@ -82,53 +78,31 @@ public class Order  {
     }
 
 
-
     public void order(){
         //implement business logic here:
         
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
-        
-        
-        // thundermarket.external.CheckStockQuery checkStockQuery = new thundermarket.external.CheckStockQuery();
-        // OrderApplication.applicationContext
-        //     .getBean(thundermarket.external.InventoryService.class)
-        //     .checkStock( checkStockQuery);
+  
     }
     public void cancel(){
         //implement business logic here:
         
         OrderCanceld orderCanceld = new OrderCanceld(this);
         orderCanceld.publishAfterCommit();
-        
-        
-        // thundermarket.external.OrderQuery orderQuery = new thundermarket.external.OrderQuery();
-        // OrderApplication.applicationContext
-        //     .getBean(thundermarket.external.Service.class)
-        //     .( orderQuery);
+ 
     }
 
 //<<< Clean Arch / Port Method
 public static void updateStatus(OutOfStock outOfStock) {
     repository().findById(outOfStock.getOrderId()).ifPresent(order ->{
-        
+
         order.setStatus("OrderCancelled");
-        repository().save(order);
+        repository().save(order);      
+
     });
 
-
-        /** Example 2:  finding and process
-        
-        repository().findById(outOfStock.get???()).ifPresent(order->{
-            
-            order // do something
-            repository().save(order);
-
-            OrderCanceld orderCanceld = new OrderCanceld(order);
-            orderCanceld.publishAfterCommit();
-
-         });
-        */
+    
 
     }
 //>>> Clean Arch / Port Method
