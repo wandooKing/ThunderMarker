@@ -113,6 +113,8 @@ public class Order  {
         Order order = new Order();
         repository().save(order);
 
+        OrderCanceld orderCanceld = new OrderCanceld(order);
+        orderCanceld.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -122,6 +124,8 @@ public class Order  {
             order // do something
             repository().save(order);
 
+            OrderCanceld orderCanceld = new OrderCanceld(order);
+            orderCanceld.publishAfterCommit();
 
          });
         */
