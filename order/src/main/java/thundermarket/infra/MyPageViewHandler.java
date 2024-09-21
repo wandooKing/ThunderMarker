@@ -31,7 +31,6 @@ public class MyPageViewHandler {
             myPage.setProductId(orderPlaced.getProductId());
             myPage.setProductName(orderPlaced.getProductName());
             myPage.setOrderStatus("주문처리완료");
-            myPage.setOrderStatus("주문처리완료");
             // view 레파지 토리에 save
             myPageRepository.save(myPage);
         } catch (Exception e) {

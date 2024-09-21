@@ -17,43 +17,19 @@ import java.time.LocalDate;
 //<<< DDD / Aggregate Root
 public class Order  {
 
-
-    
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    
-    
-    
-    
     private Long id;
-    
-    
-    
     
     private String productName;
     
-    
-    
-    
     private Integer qty;
-    
-    
-    
     
     private String status;
     
-    
-    
-    
     private String customerId;
     
-    
-    
-    
     private String customerName;
-    
-    
-    
     
     private Long productId;
 
@@ -61,15 +37,20 @@ public class Order  {
     public void onPostPersist(){
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
+    }
 
-        
+    @PostUpdate
+    public void onPostUpdate() {
+        OrderCanceld orderCanceld = new OrderCanceld(this);
+        orderCanceld.setStatus("OutofStock");
+        orderCanceld.publishAfterCommit(); 
     }
 
     @PreUpdate
     public void onPreUpdate(){
         OrderCanceld orderCanceld = new OrderCanceld(this);
         orderCanceld.setStatus("OutofStock");
-        orderCanceld.publishAfterCommit();  
+        orderCanceld.publishAfterCommit(); 
     }
 
     public static OrderRepository repository(){
@@ -96,10 +77,8 @@ public class Order  {
 //<<< Clean Arch / Port Method
 public static void updateStatus(OutOfStock outOfStock) {
     repository().findById(outOfStock.getOrderId()).ifPresent(order ->{
-
         order.setStatus("OrderCancelled");
         repository().save(order);      
-
     });
 
     
