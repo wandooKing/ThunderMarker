@@ -27,17 +27,11 @@ public class CheckStockViewHandler {
             // view 객체 생성
             CheckStock checkStock = new CheckStock();
             // view 객체에 이벤트의 Value 를 set 함
-<<<<<<< HEAD
-            checkStock.setProductId(productAdded.getId());
-            checkStock.setQty(1);
-            checkStock.setPrice(10000);
-            checkStock.setProductName(productAdded.getProductName());
-=======
             checkStock.setId(orderPlaced.getProductId());
             checkStock.setOrderId(orderPlaced.getId());
             checkStock.setProductName(orderPlaced.getProductName());
-            checkStock.setProductName(orderPlaced.getProductName());
->>>>>>> origin/template
+            
+
             // view 레파지 토리에 save
             checkStockRepository.save(checkStock);
         } catch (Exception e) {

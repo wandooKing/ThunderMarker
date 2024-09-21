@@ -20,5 +20,5 @@ public class CheckStock {
     private Integer qty;
     private String productName;
     private Long orderId;
-    private Long orderId;
+    
 }
