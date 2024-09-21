@@ -66,8 +66,8 @@ public class Order  {
 
 
 
-        OrderCanceld orderCanceld = new OrderCanceld(this);
-        orderCanceld.publishAfterCommit();
+        // OrderCanceld orderCanceld = new OrderCanceld(this);
+        // orderCanceld.publishAfterCommit();
 
     
     }

@@ -30,17 +30,17 @@ public class Inventory {
 
     @PostPersist
     public void onPostPersist() {
-        StockDecreased stockDecreased = new StockDecreased(this);
-        stockDecreased.publishAfterCommit();
+        // StockDecreased stockDecreased = new StockDecreased(this);
+        // stockDecreased.publishAfterCommit();
 
-        StockIncreased stockIncreased = new StockIncreased(this);
-        stockIncreased.publishAfterCommit();
+        // StockIncreased stockIncreased = new StockIncreased(this);
+        // stockIncreased.publishAfterCommit();
     }
 
     @PostUpdate
     public void onPostUpdate() {
-        OutOfStock outOfStock = new OutOfStock(this);
-        outOfStock.publishAfterCommit();
+        // OutOfStock outOfStock = new OutOfStock(this);
+        // outOfStock.publishAfterCommit();
     }
 
     public static InventoryRepository repository() {

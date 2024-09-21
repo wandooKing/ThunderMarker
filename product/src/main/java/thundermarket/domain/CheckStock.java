@@ -18,6 +18,7 @@ public class CheckStock {
 
     private Long productId;
     private Integer qty;
-    private Integer price;
     private String productName;
+    private Long orderId;
+    private Long orderId;
 }

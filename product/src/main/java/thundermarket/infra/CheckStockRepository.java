@@ -11,5 +11,5 @@ import thundermarket.domain.*;
 )
 public interface CheckStockRepository
     extends PagingAndSortingRepository<CheckStock, Long> {
-    List<CheckStock> findByProductId(Long productId);
+    List<CheckStock> findByOrderId(Long orderId);
 }

@@ -33,11 +33,11 @@ public class Delivery {
 
     @PostPersist
     public void onPostPersist() {
-        DeliveryStarted deliveryStarted = new DeliveryStarted(this);
-        deliveryStarted.publishAfterCommit();
+        // DeliveryStarted deliveryStarted = new DeliveryStarted(this);
+        // deliveryStarted.publishAfterCommit();
 
-        DeliveryFailed deliveryFailed = new DeliveryFailed(this);
-        deliveryFailed.publishAfterCommit();
+        // DeliveryFailed deliveryFailed = new DeliveryFailed(this);
+        // deliveryFailed.publishAfterCommit();
     }
 
     public static DeliveryRepository repository() {
