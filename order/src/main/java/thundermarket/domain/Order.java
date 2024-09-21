@@ -101,29 +101,14 @@ public class Order  {
     }
 
 //<<< Clean Arch / Port Method
-    public static void updateStatus(OutOfStock outOfStock){
+public static void updateStatus(OutOfStock outOfStock) {
+    repository().findById(outOfStock.getOrderId()).ifPresent(order ->{
         
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Order order = new Order();
+        order.setStatus("OrderCancelled");
         repository().save(order);
+    });
 
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(outOfStock.get???()).ifPresent(order->{
-            
-            order // do something
-            repository().save(order);
-
-
-         });
-        */
-
-        
-    }
+}
 //>>> Clean Arch / Port Method
 
 
