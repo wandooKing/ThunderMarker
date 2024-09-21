@@ -51,6 +51,11 @@ public class Order  {
     
     
     private String customerName;
+    
+    
+    
+    
+    private Long productId;
 
     @PostPersist
     public void onPostPersist(){

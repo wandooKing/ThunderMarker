@@ -72,6 +72,7 @@
                     { text: "status", value: "status" },
                     { text: "customerId", value: "customerId" },
                     { text: "customerName", value: "customerName" },
+                    { text: "productId", value: "productId" },
                 ],
             order : [],
             newValue: {},
@@ -94,6 +95,7 @@
                 'status': '',
                 'customerId': '',
                 'customerName': '',
+                'productId': 0,
             }
         },
         methods: {
