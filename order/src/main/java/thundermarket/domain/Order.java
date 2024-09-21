@@ -66,13 +66,17 @@ public class Order  {
 
     
     }
-    @PreUpdate
-    public void onPreUpdate(){
+    @PostUpdate
+    public void onPostUpdate(){
 
 
         OrderCanceld orderCanceld = new OrderCanceld(this);
         orderCanceld.publishAfterCommit();
 
+    
+    }
+    @PreUpdate
+    public void onPreUpdate(){
     
     }
 
