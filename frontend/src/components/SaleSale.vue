@@ -39,7 +39,14 @@
                     text
                     @click="save"
                 >
-                    RegisterProduct
+                    AddProduct
+                </v-btn>
+                <v-btn
+                    color="primary"
+                    text
+                    @click="save"
+                >
+                    DeleteProduct
                 </v-btn>
                 <v-btn
                     color="primary"

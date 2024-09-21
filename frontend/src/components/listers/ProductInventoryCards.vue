@@ -111,6 +111,8 @@
             me.newValue = {
                 'productName': '',
                 'stock': 0,
+                'regDate': '2024-09-21',
+                'expiredDate': '2024-09-21',
             }
         },
         methods:{

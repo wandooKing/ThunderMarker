@@ -43,7 +43,7 @@ mvn spring-boot:run
 ```
 - product
 ```
- http :8088/inventories id="id" productName="productName" stock="stock" 
+ http :8088/inventories id="id" productName="productName" stock="stock" regDate="regDate" expiredDate="expiredDate" 
 ```
 - sale
 ```

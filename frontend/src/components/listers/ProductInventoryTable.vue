@@ -69,6 +69,8 @@
                     { text: "id", value: "id" },
                     { text: "productName", value: "productName" },
                     { text: "stock", value: "stock" },
+                    { text: "regDate", value: "regDate" },
+                    { text: "expiredDate", value: "expiredDate" },
                 ],
             inventory : [],
             newValue: {},
@@ -88,6 +90,8 @@
             this.newValue = {
                 'productName': '',
                 'stock': 0,
+                'regDate': '2024-09-21',
+                'expiredDate': '2024-09-21',
             }
         },
         methods: {

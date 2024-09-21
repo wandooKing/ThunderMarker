@@ -86,6 +86,10 @@ public class Order  {
         orderPlaced.publishAfterCommit();
         
         
+        thundermarket.external.CheckStockQuery checkStockQuery = new thundermarket.external.CheckStockQuery();
+        OrderApplication.applicationContext
+            .getBean(thundermarket.external.InventoryService.class)
+            .checkStock( checkStockQuery);
     }
     public void cancel(){
         //implement business logic here:

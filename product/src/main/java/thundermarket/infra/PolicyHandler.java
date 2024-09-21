@@ -41,6 +41,22 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='ProductDeleted'"
+    )
+    public void wheneverProductDeleted_DecreaseStock(
+        @Payload ProductDeleted productDeleted
+    ) {
+        ProductDeleted event = productDeleted;
+        System.out.println(
+            "\n\n##### listener DecreaseStock : " + productDeleted + "\n\n"
+        );
+
+        // Sample Logic //
+        Inventory.decreaseStock(event);
+    }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
         condition = "headers['type']=='DeliveryFailed'"
     )
     public void wheneverDeliveryFailed_IncreaseStock(
@@ -57,14 +73,14 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='ProductRegistered'"
+        condition = "headers['type']=='ProductAdded'"
     )
-    public void wheneverProductRegistered_IncreaseStock(
-        @Payload ProductRegistered productRegistered
+    public void wheneverProductAdded_IncreaseStock(
+        @Payload ProductAdded productAdded
     ) {
-        ProductRegistered event = productRegistered;
+        ProductAdded event = productAdded;
         System.out.println(
-            "\n\n##### listener IncreaseStock : " + productRegistered + "\n\n"
+            "\n\n##### listener IncreaseStock : " + productAdded + "\n\n"
         );
 
         // Sample Logic //

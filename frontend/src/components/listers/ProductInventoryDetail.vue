@@ -11,6 +11,12 @@
             <div>
                 <Number label="Stock" v-model="item.stock" :editMode="editMode" @change="change" />
             </div>
+            <div>
+                <Date label="RegDate" v-model="item.regDate" :editMode="editMode" @change="change" />
+            </div>
+            <div>
+                <Date label="ExpiredDate" v-model="item.expiredDate" :editMode="editMode" @change="change" />
+            </div>
         </v-card-text>
 
         <v-card-actions>
