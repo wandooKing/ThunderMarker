@@ -18,19 +18,19 @@ public class CheckStockViewHandler {
     private CheckStockRepository checkStockRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenProductAdded_then_CREATE_1(
-        @Payload ProductAdded productAdded
+    public void whenOrderPlaced_then_CREATE_1(
+        @Payload OrderPlaced orderPlaced
     ) {
         try {
-            if (!productAdded.validate()) return;
+            if (!orderPlaced.validate()) return;
 
             // view 객체 생성
             CheckStock checkStock = new CheckStock();
             // view 객체에 이벤트의 Value 를 set 함
-            checkStock.setProductId(productAdded.getId());
-            checkStock.setQty(1);
-            checkStock.setPrice(100, 000, 000);
-            checkStock.setProductName(productAdded.getProductName());
+            checkStock.setId(orderPlaced.getProductId());
+            checkStock.setOrderId(orderPlaced.getId());
+            checkStock.setProductName(orderPlaced.getProductName());
+            checkStock.setProductName(orderPlaced.getProductName());
             // view 레파지 토리에 save
             checkStockRepository.save(checkStock);
         } catch (Exception e) {
@@ -39,19 +39,19 @@ public class CheckStockViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenStockIncreased_then_UPDATE_1(
-        @Payload StockIncreased stockIncreased
+    public void whenStockDecreased_then_UPDATE_1(
+        @Payload StockDecreased stockDecreased
     ) {
         try {
-            if (!stockIncreased.validate()) return;
+            if (!stockDecreased.validate()) return;
             // view 객체 조회
 
-            List<CheckStock> checkStockList = checkStockRepository.findByProductId(
-                stockIncreased.getId()
+            List<CheckStock> checkStockList = checkStockRepository.findByOrderId(
+                stockDecreased.getId()
             );
             for (CheckStock checkStock : checkStockList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                checkStock.setQty(stockIncreased.getStock());
+                checkStock.setQty(stockDecreased.getStock());
                 // view 레파지 토리에 save
                 checkStockRepository.save(checkStock);
             }
@@ -61,19 +61,19 @@ public class CheckStockViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenStockDecreased_then_UPDATE_2(
-        @Payload StockDecreased stockDecreased
+    public void whenStockIncreased_then_UPDATE_2(
+        @Payload StockIncreased stockIncreased
     ) {
         try {
-            if (!stockDecreased.validate()) return;
+            if (!stockIncreased.validate()) return;
             // view 객체 조회
 
-            List<CheckStock> checkStockList = checkStockRepository.findByProductId(
-                stockDecreased.getId()
+            List<CheckStock> checkStockList = checkStockRepository.findByOrderId(
+                stockIncreased.getId()
             );
             for (CheckStock checkStock : checkStockList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                checkStock.setQty(stockDecreased.getStock());
+                checkStock.setQty(stockIncreased.getStock());
                 // view 레파지 토리에 save
                 checkStockRepository.save(checkStock);
             }
