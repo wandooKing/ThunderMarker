@@ -29,6 +29,8 @@ public class Delivery {
 
     private String status;
 
+    private Long productId;
+
     @PostPersist
     public void onPostPersist() {
         DeliveryStarted deliveryStarted = new DeliveryStarted(this);

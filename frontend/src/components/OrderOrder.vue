@@ -21,6 +21,7 @@
             <String label="Status" v-model="value.status" :editMode="editMode" :inputUI="''"/>
             <String label="CustomerId" v-model="value.customerId" :editMode="editMode" :inputUI="''"/>
             <String label="CustomerName" v-model="value.customerName" :editMode="editMode" :inputUI="''"/>
+            <Number label="ProductId" v-model="value.productId" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>

@@ -114,6 +114,7 @@
                 'status': '',
                 'customerId': '',
                 'customerName': '',
+                'productId': 0,
             }
         },
         methods:{

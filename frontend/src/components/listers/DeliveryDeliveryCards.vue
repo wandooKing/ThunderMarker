@@ -114,6 +114,7 @@
                 'orderId': 0,
                 'address': '',
                 'status': '',
+                'productId': 0,
             }
         },
         methods:{
