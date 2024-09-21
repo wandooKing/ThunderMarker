@@ -24,6 +24,10 @@ public class Inventory {
 
     private Integer stock;
 
+    private Date regDate;
+
+    private Date expiredDate;
+
     @PostPersist
     public void onPostPersist() {
         StockDecreased stockDecreased = new StockDecreased(this);
@@ -69,6 +73,38 @@ public class Inventory {
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
+    public static void decreaseStock(ProductDeleted productDeleted) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Inventory inventory = new Inventory();
+        repository().save(inventory);
+
+        StockDecreased stockDecreased = new StockDecreased(inventory);
+        stockDecreased.publishAfterCommit();
+        OutOfStock outOfStock = new OutOfStock(inventory);
+        outOfStock.publishAfterCommit();
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(productDeleted.get???()).ifPresent(inventory->{
+            
+            inventory // do something
+            repository().save(inventory);
+
+            StockDecreased stockDecreased = new StockDecreased(inventory);
+            stockDecreased.publishAfterCommit();
+            OutOfStock outOfStock = new OutOfStock(inventory);
+            outOfStock.publishAfterCommit();
+
+         });
+        */
+
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
     public static void increaseStock(DeliveryFailed deliveryFailed) {
         //implement business logic here:
 
@@ -97,7 +133,7 @@ public class Inventory {
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
-    public static void increaseStock(ProductRegistered productRegistered) {
+    public static void increaseStock(ProductAdded productAdded) {
         //implement business logic here:
 
         /** Example 1:  new item 
@@ -110,7 +146,7 @@ public class Inventory {
 
         /** Example 2:  finding and process
         
-        repository().findById(productRegistered.get???()).ifPresent(inventory->{
+        repository().findById(productAdded.get???()).ifPresent(inventory->{
             
             inventory // do something
             repository().save(inventory);

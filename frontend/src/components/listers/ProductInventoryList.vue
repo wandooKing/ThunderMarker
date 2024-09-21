@@ -43,12 +43,16 @@
                             
                             
                             
+                            
+                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
                             [ Id :  {{data.id }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ ProductName :  {{data.productName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Stock :  {{data.stock }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ RegDate :  {{data.regDate }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ ExpiredDate :  {{data.expiredDate }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -118,6 +122,8 @@
             this.newValue = {
                 'productName': '',
                 'stock': 0,
+                'regDate': '2024-09-21',
+                'expiredDate': '2024-09-21',
             }
         },
         methods: {

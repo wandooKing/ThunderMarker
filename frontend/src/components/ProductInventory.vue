@@ -18,6 +18,8 @@
         <v-card-text>
             <String label="ProductName" v-model="value.productName" :editMode="editMode" :inputUI="''"/>
             <Number label="Stock" v-model="value.stock" :editMode="editMode" :inputUI="''"/>
+            <Date label="RegDate" v-model="value.regDate" :editMode="editMode" :inputUI="''"/>
+            <Date label="ExpiredDate" v-model="value.expiredDate" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>

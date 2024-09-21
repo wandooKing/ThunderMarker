@@ -6,7 +6,8 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import thundermarket.SaleApplication;
-import thundermarket.domain.ProductRegistered;
+import thundermarket.domain.ProductAdded;
+import thundermarket.domain.ProductDeleted;
 
 @Entity
 @Table(name = "Sale_table")
@@ -30,8 +31,11 @@ public class Sale {
 
     @PostPersist
     public void onPostPersist() {
-        ProductRegistered productRegistered = new ProductRegistered(this);
-        productRegistered.publishAfterCommit();
+        ProductAdded productAdded = new ProductAdded(this);
+        productAdded.publishAfterCommit();
+
+        ProductDeleted productDeleted = new ProductDeleted(this);
+        productDeleted.publishAfterCommit();
     }
 
     public static SaleRepository repository() {
@@ -41,7 +45,12 @@ public class Sale {
         return saleRepository;
     }
 
-    public void registerProduct() {
+    public void addProduct() {
+        //implement business logic here:
+
+    }
+
+    public void deleteProduct() {
         //implement business logic here:
 
     }
