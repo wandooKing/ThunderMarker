@@ -89,10 +89,10 @@ public class Order  {
         orderCanceld.publishAfterCommit();
         
         
-        thundermarket.external.OrderQuery orderQuery = new thundermarket.external.OrderQuery();
-        OrderApplication.applicationContext
-            .getBean(thundermarket.external.Service.class)
-            .( orderQuery);
+        // thundermarket.external.OrderQuery orderQuery = new thundermarket.external.OrderQuery();
+        // OrderApplication.applicationContext
+        //     .getBean(thundermarket.external.Service.class)
+        //     .( orderQuery);
     }
 
 //<<< Clean Arch / Port Method
