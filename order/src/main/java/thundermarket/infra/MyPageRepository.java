@@ -7,4 +7,6 @@ import thundermarket.domain.*;
 
 @RepositoryRestResource(collectionResourceRel = "myPages", path = "myPages")
 public interface MyPageRepository
-    extends PagingAndSortingRepository<MyPage, Long> {}
+    extends PagingAndSortingRepository<MyPage, Long> {
+    List<MyPage> findByOrderId(String orderId);
+}
