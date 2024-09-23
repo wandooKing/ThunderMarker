@@ -39,6 +39,10 @@ public class Inventory {
 
     @PostUpdate
     public void onPostUpdate() {
+
+        StockDecreased stockDecreased = new StockDecreased(this);
+        stockDecreased.publishAfterCommit();
+
         OutOfStock outOfStock = new OutOfStock(this);
         outOfStock.publishAfterCommit();
     }
@@ -59,12 +63,12 @@ public static void decreaseStock(Paid paid) {
         if(inventory.getStock() >= paid.getQty()){
             inventory.setStock(inventory.getStock() - paid.getQty()); 
             repository().save(inventory);
-
             StockDecreased stockDecreased = new StockDecreased(inventory);
             stockDecreased.publishAfterCommit();
         }else{
                 OutOfStock outOfStock = new OutOfStock(inventory);
                 outOfStock.setOrderId(paid.getId()); 
+                
                 outOfStock.publishAfterCommit();
         }
     });

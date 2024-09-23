@@ -42,14 +42,8 @@ public class Order  {
     @PostUpdate
     public void onPostUpdate(){
         OrderCanceled orderCanceled = new OrderCanceled(this);
+        orderCanceled.setStatus("OutofStock");
         orderCanceled.publishAfterCommit();
-    }
-
-    @PreUpdate
-    public void onPreUpdate(){
-        OrderCanceld orderCanceld = new OrderCanceld(this);
-        orderCanceld.setStatus("OutofStock");
-        orderCanceld.publishAfterCommit(); 
     }
 
     public static OrderRepository repository(){
@@ -63,11 +57,15 @@ public class Order  {
         
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
+
+        // thundermarket.external.CheckStockQuery checkStockQuery = new untitledasdasdas.external.CheckStockQuery();
+        // OrderApplication.applicationContext
+        //     .getBean(thundermarket.external.InventoryService.class)
+        //     .checkStock(checkStockQuery);
   
     }
     public void cancel(){
         //implement business logic here:
-        
         OrderCanceld orderCanceld = new OrderCanceld(this);
         orderCanceld.publishAfterCommit();
  
@@ -75,13 +73,12 @@ public class Order  {
 
 //<<< Clean Arch / Port Method
 public static void updateStatus(OutOfStock outOfStock) {
-    repository().findById(outOfStock.getOrderId()).ifPresent(order ->{
+    repository().findById(outOfStock.getId()).ifPresent(order ->{
         order.setStatus("OrderCancelled");
         repository().save(order);      
     });
-    }
+}
 //>>> Clean Arch / Port Method
-
 
 }
 //>>> DDD / Aggregate Root
