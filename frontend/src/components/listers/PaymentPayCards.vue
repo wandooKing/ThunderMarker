@@ -116,6 +116,7 @@
                 'status': '',
                 'productId': 0,
                 'paymentStatus': '',
+                'price': 0,
             }
         },
         methods:{

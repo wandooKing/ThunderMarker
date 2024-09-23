@@ -56,6 +56,11 @@ public class Order  {
     
     
     private Long productId;
+    
+    
+    
+    
+    private Integer price;
 
     @PostPersist
     public void onPostPersist(){

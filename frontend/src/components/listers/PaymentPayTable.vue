@@ -74,6 +74,7 @@
                     { text: "status", value: "status" },
                     { text: "productId", value: "productId" },
                     { text: "paymentStatus", value: "paymentStatus" },
+                    { text: "price", value: "price" },
                 ],
             pay : [],
             newValue: {},
@@ -98,6 +99,7 @@
                 'status': '',
                 'productId': 0,
                 'paymentStatus': '',
+                'price': 0,
             }
         },
         methods: {
