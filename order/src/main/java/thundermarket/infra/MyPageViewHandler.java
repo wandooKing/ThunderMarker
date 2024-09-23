@@ -27,7 +27,7 @@ public class MyPageViewHandler {
             // view 객체 생성
             MyPage myPage = new MyPage();
             // view 객체에 이벤트의 Value 를 set 함
-            myPage.setOrderId(String.valueOf(orderPlaced.getId()));
+            myPage.setOrderId(orderPlaced.getId());
             myPage.setProductId(orderPlaced.getProductId());
             myPage.setProductName(orderPlaced.getProductName());
             myPage.setOrderStatus("주문처리완료");
@@ -45,7 +45,7 @@ public class MyPageViewHandler {
             // view 객체 조회
 
             List<MyPage> myPageList = myPageRepository.findByOrderId(
-                String.valueOf(paid.getOrderId())
+                String.valueOf(paid.getId())
             );
             for (MyPage myPage : myPageList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함

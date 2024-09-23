@@ -19,5 +19,5 @@ public class MyPage {
     private Long productId;
     private String productName;
     private String orderStatus;
-    private String orderId;
+    private Long orderId;
 }
