@@ -71,8 +71,12 @@ public class Pay {
         pay.setProductId(orderCanceled.getProductId());
         pay.setProductName(orderCanceled.getProductName());
         pay.setQty(orderCanceled.getQty());
-        pay.setStatus("PaymentFailed");
-
+        if(orderCanceled.getStatus().equals("OutofStock")){
+            pay.setStatus("PaymentFailedByOutofStock");
+        }else{
+            pay.setStatus("PaymentFailedByCustomer");
+        }
+    
         repository().save(pay);
         
         PaymentCanceled paymentCanceled = new PaymentCanceled(pay);
