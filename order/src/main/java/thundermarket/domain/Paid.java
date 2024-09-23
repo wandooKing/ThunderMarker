@@ -1,10 +1,9 @@
 package thundermarket.domain;
 
-import thundermarket.infra.AbstractEvent;
-import lombok.Data;
-import java.util.*;
 import java.time.LocalDate;
-
+import java.util.*;
+import lombok.Data;
+import thundermarket.infra.AbstractEvent;
 
 @Data
 public class Paid extends AbstractEvent {
@@ -16,5 +15,5 @@ public class Paid extends AbstractEvent {
     private String address;
     private String status;
     private Long productId;
-    private String payment status;
+    private String paymentStatus;
 }
