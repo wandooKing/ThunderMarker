@@ -41,12 +41,8 @@ public class Order  {
 
     @PostUpdate
     public void onPostUpdate(){
-
-
         OrderCanceled orderCanceled = new OrderCanceled(this);
         orderCanceled.publishAfterCommit();
-
-    
     }
 
     @PreUpdate
@@ -83,9 +79,6 @@ public static void updateStatus(OutOfStock outOfStock) {
         order.setStatus("OrderCancelled");
         repository().save(order);      
     });
-
-    
-
     }
 //>>> Clean Arch / Port Method
 

@@ -35,11 +35,11 @@ public class Pay {
 
     @PostPersist
     public void onPostPersist() {
-        Paid paid = new Paid(this);
-        paid.publishAfterCommit();
+        // Paid paid = new Paid(this);
+        // paid.publishAfterCommit();
 
-        PaymentCanceled paymentCanceled = new PaymentCanceled(this);
-        paymentCanceled.publishAfterCommit();
+        // PaymentCanceled paymentCanceled = new PaymentCanceled(this);
+        // paymentCanceled.publishAfterCommit();
     }
 
     public static PayRepository repository() {
@@ -51,29 +51,17 @@ public class Pay {
 
     //<<< Clean Arch / Port Method
     public static void pay(OrderPlaced orderPlaced) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
         Pay pay = new Pay();
-        repository().save(pay);
+        pay.setOrderId(orderPlaced.getId());;
+        pay.setProductId(orderPlaced.getProductId());
+        pay.setProductName(orderPlaced.getProductName());
+        pay.setQty(orderPlaced.getQty());
+        pay.setStatus("PaymentSuccessed");
 
+        repository().save(pay);
+        
         Paid paid = new Paid(pay);
         paid.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(orderPlaced.get???()).ifPresent(pay->{
-            
-            pay // do something
-            repository().save(pay);
-
-            Paid paid = new Paid(pay);
-            paid.publishAfterCommit();
-
-         });
-        */
-
     }
 
     //>>> Clean Arch / Port Method
