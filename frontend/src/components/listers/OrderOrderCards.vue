@@ -115,6 +115,7 @@
                 'customerId': '',
                 'customerName': '',
                 'productId': 0,
+                'price': 0,
             }
         },
         methods:{

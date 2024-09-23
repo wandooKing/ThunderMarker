@@ -23,6 +23,9 @@
             <div>
                 <Number label="ProductId" v-model="item.productId" :editMode="editMode" @change="change" />
             </div>
+            <div>
+                <Number label="Price" v-model="item.price" :editMode="editMode" @change="change" />
+            </div>
         </v-card-text>
 
         <v-card-actions>

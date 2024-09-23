@@ -32,6 +32,11 @@ public class Order  {
     private String customerName;
     
     private Long productId;
+    
+    
+    
+    
+    private Integer price;
 
     @PostPersist
     public void onPostPersist(){

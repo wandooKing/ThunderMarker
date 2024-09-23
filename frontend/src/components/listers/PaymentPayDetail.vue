@@ -26,6 +26,9 @@
             <div>
                 <String label="PaymentStatus" v-model="item.paymentStatus" :editMode="editMode" @change="change" />
             </div>
+            <div>
+                <Number label="Price" v-model="item.price" :editMode="editMode" @change="change" />
+            </div>
         </v-card-text>
 
         <v-card-actions>

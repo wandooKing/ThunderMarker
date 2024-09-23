@@ -33,6 +33,8 @@ public class Pay {
 
     private String paymentStatus;
 
+    private Integer price;
+
     @PostPersist
     public void onPostPersist() {
         // Paid paid = new Paid(this);
