@@ -8,8 +8,8 @@ Vue.use(Router);
 import OrderOrderManager from "./components/listers/OrderOrderCards"
 import OrderOrderDetail from "./components/listers/OrderOrderDetail"
 
-import DeliveryDeliveryManager from "./components/listers/DeliveryDeliveryCards"
-import DeliveryDeliveryDetail from "./components/listers/DeliveryDeliveryDetail"
+import PaymentPayManager from "./components/listers/PaymentPayCards"
+import PaymentPayDetail from "./components/listers/PaymentPayDetail"
 
 import ProductInventoryManager from "./components/listers/ProductInventoryCards"
 import ProductInventoryDetail from "./components/listers/ProductInventoryDetail"
@@ -34,14 +34,14 @@ export default new Router({
             },
 
             {
-                path: '/deliveries/deliveries',
-                name: 'DeliveryDeliveryManager',
-                component: DeliveryDeliveryManager
+                path: '/payments/pays',
+                name: 'PaymentPayManager',
+                component: PaymentPayManager
             },
             {
-                path: '/deliveries/deliveries/:id',
-                name: 'DeliveryDeliveryDetail',
-                component: DeliveryDeliveryDetail
+                path: '/payments/pays/:id',
+                name: 'PaymentPayDetail',
+                component: PaymentPayDetail
             },
 
             {

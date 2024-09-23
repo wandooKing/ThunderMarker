@@ -1,7 +1,7 @@
 package thundermarket.domain;
 
 import thundermarket.domain.OrderPlaced;
-import thundermarket.domain.OrderCanceld;
+import thundermarket.domain.OrderCanceled;
 import thundermarket.OrderApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -70,8 +70,8 @@ public class Order  {
     public void onPostUpdate(){
 
 
-        OrderCanceld orderCanceld = new OrderCanceld(this);
-        orderCanceld.publishAfterCommit();
+        OrderCanceled orderCanceled = new OrderCanceled(this);
+        orderCanceled.publishAfterCommit();
 
     
     }
@@ -102,8 +102,8 @@ public class Order  {
     public void cancel(){
         //implement business logic here:
         
-        OrderCanceld orderCanceld = new OrderCanceld(this);
-        orderCanceld.publishAfterCommit();
+        OrderCanceled orderCanceled = new OrderCanceled(this);
+        orderCanceled.publishAfterCommit();
         
         
         thundermarket.external.OrderQuery orderQuery = new thundermarket.external.OrderQuery();
@@ -121,8 +121,8 @@ public class Order  {
         Order order = new Order();
         repository().save(order);
 
-        OrderCanceld orderCanceld = new OrderCanceld(order);
-        orderCanceld.publishAfterCommit();
+        OrderCanceled orderCanceled = new OrderCanceled(order);
+        orderCanceled.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -132,8 +132,8 @@ public class Order  {
             order // do something
             repository().save(order);
 
-            OrderCanceld orderCanceld = new OrderCanceld(order);
-            orderCanceld.publishAfterCommit();
+            OrderCanceled orderCanceled = new OrderCanceled(order);
+            orderCanceled.publishAfterCommit();
 
          });
         */

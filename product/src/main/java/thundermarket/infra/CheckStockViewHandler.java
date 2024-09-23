@@ -31,7 +31,6 @@ public class CheckStockViewHandler {
             checkStock.setOrderId(orderPlaced.getId());
             checkStock.setProductName(orderPlaced.getProductName());
             checkStock.setQty(71);
-            checkStock.setQty(71);
             // view 레파지 토리에 save
             checkStockRepository.save(checkStock);
         } catch (Exception e) {
