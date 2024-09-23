@@ -47,7 +47,7 @@ public class MyPageViewHandler {
             // view 객체 조회
 
             List<MyPage> myPageList = myPageRepository.findByOrderId(
-                String.valueOf(stockDecreased.getId())
+                stockDecreased.getId()
             );
             for (MyPage myPage : myPageList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
