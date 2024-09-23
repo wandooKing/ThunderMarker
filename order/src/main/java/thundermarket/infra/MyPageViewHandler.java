@@ -39,13 +39,15 @@ public class MyPageViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenPaid_then_UPDATE_1(@Payload Paid paid) {
+    public void whenStockDecreased_then_UPDATE_1(
+        @Payload StockDecreased stockDecreased
+    ) {
         try {
-            if (!paid.validate()) return;
+            if (!stockDecreased.validate()) return;
             // view 객체 조회
 
             List<MyPage> myPageList = myPageRepository.findByOrderId(
-                String.valueOf(paid.getId())
+                String.valueOf(stockDecreased.getId())
             );
             for (MyPage myPage : myPageList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
