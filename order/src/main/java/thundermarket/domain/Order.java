@@ -72,20 +72,9 @@ public class Order  {
     public void cancel(){
         //implement business logic here:
         
-<<<<<<< HEAD
         OrderCanceld orderCanceld = new OrderCanceld(this);
         orderCanceld.publishAfterCommit();
  
-=======
-        OrderCanceled orderCanceled = new OrderCanceled(this);
-        orderCanceled.publishAfterCommit();
-        
-        
-        thundermarket.external.OrderQuery orderQuery = new thundermarket.external.OrderQuery();
-        OrderApplication.applicationContext
-            .getBean(thundermarket.external.Service.class)
-            .( orderQuery);
->>>>>>> origin/template
     }
 
 //<<< Clean Arch / Port Method
@@ -97,27 +86,6 @@ public static void updateStatus(OutOfStock outOfStock) {
 
     
 
-<<<<<<< HEAD
-=======
-        OrderCanceled orderCanceled = new OrderCanceled(order);
-        orderCanceled.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(outOfStock.get???()).ifPresent(order->{
-            
-            order // do something
-            repository().save(order);
-
-            OrderCanceled orderCanceled = new OrderCanceled(order);
-            orderCanceled.publishAfterCommit();
-
-         });
-        */
-
-        
->>>>>>> origin/template
     }
 //>>> Clean Arch / Port Method
 

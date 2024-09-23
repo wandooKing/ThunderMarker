@@ -50,7 +50,7 @@ public class PolicyHandler {
         );
 
         // Sample Logic //
-        Inventory.decreaseStock(event);
+        // Inventory.decreaseStock(event);
     }
 
     @StreamListener(

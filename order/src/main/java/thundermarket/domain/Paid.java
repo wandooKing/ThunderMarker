@@ -16,5 +16,5 @@ public class Paid extends AbstractEvent {
     private String address;
     private String status;
     private Long productId;
-    private String payment status;
+    private String paymentstatus;
 }
