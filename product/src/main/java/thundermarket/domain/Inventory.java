@@ -51,61 +51,28 @@ public class Inventory {
     }
 
     //<<< Clean Arch / Port Method
-    public static void decreaseStock(DeliveryStarted deliveryStarted) {
 
-        repository().findById(Long.valueOf(deliveryStarted.getProductId())).ifPresent(inventory->{
-            if(inventory.getStock() >= deliveryStarted.getQty()){
-                inventory.setStock(inventory.getStock() - deliveryStarted.getQty()); 
-                repository().save(inventory);
+public static void decreaseStock(Paid paid) {
+    //implement business logic here:
 
-                StockDecreased stockDecreased = new StockDecreased(inventory);
-                stockDecreased.publishAfterCommit();
-
-            }else{
-                OutOfStock outOfStock = new OutOfStock(inventory);
-                outOfStock.setOrderId(deliveryStarted.getId()); 
-                outOfStock.publishAfterCommit();
-            }
-            
-        });
-        
-    }
-
-    //>>> Clean Arch / Port Method
-    //<<< Clean Arch / Port Method
-    public static void decreaseStock(ProductDeleted productDeleted) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Inventory inventory = new Inventory();
-        repository().save(inventory);
-
-        StockDecreased stockDecreased = new StockDecreased(inventory);
-        stockDecreased.publishAfterCommit();
-        OutOfStock outOfStock = new OutOfStock(inventory);
-        outOfStock.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(productDeleted.get???()).ifPresent(inventory->{
-            
-            inventory // do something
+    repository().findById(Long.valueOf(paid.getProductId())).ifPresent(inventory->{
+        if(inventory.getStock() >= paid.getQty()){
+            inventory.setStock(inventory.getStock() - paid.getQty()); 
             repository().save(inventory);
 
             StockDecreased stockDecreased = new StockDecreased(inventory);
             stockDecreased.publishAfterCommit();
-            OutOfStock outOfStock = new OutOfStock(inventory);
-            outOfStock.publishAfterCommit();
-
-         });
-        */
-
-    }
+        }else{
+                OutOfStock outOfStock = new OutOfStock(inventory);
+                outOfStock.setOrderId(paid.getId()); 
+                outOfStock.publishAfterCommit();
+        }
+    });
+}
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
-    public static void increaseStock(DeliveryFailed deliveryFailed) {
+    public static void increaseStock(PaymentCanceled paymentCanceled) {
         //implement business logic here:
 
         /** Example 1:  new item 
@@ -118,7 +85,7 @@ public class Inventory {
 
         /** Example 2:  finding and process
         
-        repository().findById(deliveryFailed.get???()).ifPresent(inventory->{
+        repository().findById(paymentCanceled.get???()).ifPresent(inventory->{
             
             inventory // do something
             repository().save(inventory);

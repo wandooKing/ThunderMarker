@@ -1,6 +1,6 @@
 <template>
     <div>
-    <h1>Inventory</h1>
+    <h1>Pay</h1>
         <v-row>
             <v-card
                 class="mx-auto"
@@ -26,7 +26,7 @@
                         color="primary"
                         style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
                     >
-                        Inventory 등록
+                        Pay 등록
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -45,14 +45,20 @@
                             
                             
                             
+                            
+                            
+                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
                             [ Id :  {{data.id }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ ProductName :  {{data.productName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ Stock :  {{data.stock }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ RegDate :  {{data.regDate }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ ExpiredDate :  {{data.expiredDate }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Qty :  {{data.qty }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ OrderId :  {{data.orderId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Address :  {{data.address }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Status :  {{data.status }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ ProductId :  {{data.productId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ PaymentStatus :  {{data.paymentStatus }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -72,7 +78,7 @@
                         transition="dialog-bottom-transition"
                 >
 
-                    <ProductInventory :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
+                    <PaymentPay :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
                 
                     <v-btn
                             style="postition:absolute; top:2%; right:2%"
@@ -91,12 +97,12 @@
 
 <script>
     const axios = require('axios').default;
-    import ProductInventory from './../ProductInventory.vue';
+    import PaymentPay from './../PaymentPay.vue';
 
     export default {
-        name: 'ProductInventoryManager',
+        name: 'PaymentPayManager',
         components: {
-            ProductInventory,
+            PaymentPay,
         },
         props: {
             offline: Boolean,
@@ -115,15 +121,18 @@
                 return;
             } 
 
-            var temp = await axios.get(axios.fixUrl('/inventories'))
-            temp.data._embedded.inventories.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
-            this.values = temp.data._embedded.inventories;
+            var temp = await axios.get(axios.fixUrl('/pays'))
+            temp.data._embedded.pays.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
+            this.values = temp.data._embedded.pays;
             
             this.newValue = {
                 'productName': '',
-                'stock': 0,
-                'regDate': '2024-09-23',
-                'expiredDate': '2024-09-23',
+                'qty': 0,
+                'orderId': 0,
+                'address': '',
+                'status': '',
+                'productId': 0,
+                'paymentStatus': '',
             }
         },
         methods: {

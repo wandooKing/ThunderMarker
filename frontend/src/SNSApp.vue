@@ -48,13 +48,13 @@
 
                     <v-list-item
                         class="px-2"
-                        key="deliveries"
-                        to="/deliveries/deliveries"
+                        key="pays"
+                        to="/payments/pays"
                         @click="changeUrl()"
                         color="primary"
                         style="font-weight:700;"
                     >
-                        Delivery
+                        Pay
                     </v-list-item>
 
 
@@ -168,10 +168,10 @@ export default {
                 ImageUrl: '',
             },
             { 
-                title: 'Delivery', 
+                title: 'Pay', 
                 description: '', 
-                key: 'deliveries', 
-                route: '/deliveries/deliveries',
+                key: 'pays', 
+                route: '/payments/pays',
                 ImageUrl: '',
             },
             { 

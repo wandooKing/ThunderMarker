@@ -1,7 +1,7 @@
 package thundermarket.domain;
 
 import thundermarket.domain.OrderPlaced;
-import thundermarket.domain.OrderCanceld;
+import thundermarket.domain.OrderCanceled;
 import thundermarket.OrderApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -40,10 +40,13 @@ public class Order  {
     }
 
     @PostUpdate
-    public void onPostUpdate() {
-        OrderCanceld orderCanceld = new OrderCanceld(this);
-        orderCanceld.setStatus("OutofStock");
-        orderCanceld.publishAfterCommit(); 
+    public void onPostUpdate(){
+
+
+        OrderCanceled orderCanceled = new OrderCanceled(this);
+        orderCanceled.publishAfterCommit();
+
+    
     }
 
     @PreUpdate
@@ -69,9 +72,20 @@ public class Order  {
     public void cancel(){
         //implement business logic here:
         
+<<<<<<< HEAD
         OrderCanceld orderCanceld = new OrderCanceld(this);
         orderCanceld.publishAfterCommit();
  
+=======
+        OrderCanceled orderCanceled = new OrderCanceled(this);
+        orderCanceled.publishAfterCommit();
+        
+        
+        thundermarket.external.OrderQuery orderQuery = new thundermarket.external.OrderQuery();
+        OrderApplication.applicationContext
+            .getBean(thundermarket.external.Service.class)
+            .( orderQuery);
+>>>>>>> origin/template
     }
 
 //<<< Clean Arch / Port Method
@@ -83,6 +97,27 @@ public static void updateStatus(OutOfStock outOfStock) {
 
     
 
+<<<<<<< HEAD
+=======
+        OrderCanceled orderCanceled = new OrderCanceled(order);
+        orderCanceled.publishAfterCommit();
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(outOfStock.get???()).ifPresent(order->{
+            
+            order // do something
+            repository().save(order);
+
+            OrderCanceled orderCanceled = new OrderCanceled(order);
+            orderCanceled.publishAfterCommit();
+
+         });
+        */
+
+        
+>>>>>>> origin/template
     }
 //>>> Clean Arch / Port Method
 

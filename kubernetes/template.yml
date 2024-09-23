@@ -43,22 +43,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: delivery
+  name: payment
   labels:
-    app: delivery
+    app: payment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: delivery
+      app: payment
   template:
     metadata:
       labels:
-        app: delivery
+        app: payment
     spec:
       containers:
-        - name: delivery
-          image: username/delivery:latest
+        - name: payment
+          image: username/payment:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -182,15 +182,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: delivery
+  name: payment
   labels:
-    app: delivery
+    app: payment
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: delivery
+    app: payment
 
 
 ---

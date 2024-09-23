@@ -13,7 +13,7 @@
                         class="border-color"
                     >
                     </v-list-item-avatar>
-                    <h1 class="align-self-center ml-3">Inventory</h1>
+                    <h1 class="align-self-center ml-3">Pay</h1>
                     <div class="secondary-text-color" style="margin-left:30px;"></div>
                 </v-list-item>
             </v-row>
@@ -27,7 +27,7 @@
                         hide-overlay
                         transition="dialog-bottom-transition"
                 >
-                    <ProductInventory :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" 
+                    <PaymentPay :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" 
                             @add="append" v-if="tick"/>
 
                     <v-btn
@@ -66,7 +66,7 @@
                                 color="primary"
                                 style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
                             >
-                                Inventory 등록
+                                Pay 등록
                             </v-btn>
                         </v-card-actions>
                     </v-card>
@@ -74,7 +74,7 @@
             </div>
         </v-col>
         <v-row>
-            <ProductInventory :offline="offline" class="video-card" v-for="(value, index) in values" v-model="values[index]" v-bind:key="index" @delete="remove"/>
+            <PaymentPay :offline="offline" class="video-card" v-for="(value, index) in values" v-model="values[index]" v-bind:key="index" @delete="remove"/>
         </v-row>
     </div>
 </template>
@@ -82,12 +82,12 @@
 <script>
 
     const axios = require('axios').default;
-    import ProductInventory from './../ProductInventory.vue';
+    import PaymentPay from './../PaymentPay.vue';
 
     export default {
-        name: 'ProductInventoryManager',
+        name: 'PaymentPayManager',
         components: {
-            ProductInventory,
+            PaymentPay,
         },
         props: {
             offline: Boolean
@@ -105,14 +105,17 @@
                 return;
             } 
 
-            var temp = await axios.get(axios.fixUrl('/inventories'))
-            me.values = temp.data._embedded.inventories;
+            var temp = await axios.get(axios.fixUrl('/pays'))
+            me.values = temp.data._embedded.pays;
             
             me.newValue = {
                 'productName': '',
-                'stock': 0,
-                'regDate': '2024-09-23',
-                'expiredDate': '2024-09-23',
+                'qty': 0,
+                'orderId': 0,
+                'address': '',
+                'status': '',
+                'productId': 0,
+                'paymentStatus': '',
             }
         },
         methods:{

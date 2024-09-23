@@ -31,7 +31,7 @@
                         </v-fab-transition>
                     </template>
 
-                    <ProductInventory :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
+                    <PaymentPay :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
                 
                     <v-btn
                             style="postition:absolute; top:2%; right:2%"
@@ -50,12 +50,12 @@
 
 <script>
     const axios = require('axios').default;
-    import ProductInventory from './../ProductInventory.vue';
+    import PaymentPay from './../PaymentPay.vue';
 
     export default {
-        name: 'ProductInventoryManager',
+        name: 'PaymentPayManager',
         components: {
-            ProductInventory,
+            PaymentPay,
         },
         props: {
             offline: Boolean,
@@ -68,11 +68,14 @@
                 [
                     { text: "id", value: "id" },
                     { text: "productName", value: "productName" },
-                    { text: "stock", value: "stock" },
-                    { text: "regDate", value: "regDate" },
-                    { text: "expiredDate", value: "expiredDate" },
+                    { text: "qty", value: "qty" },
+                    { text: "orderId", value: "orderId" },
+                    { text: "address", value: "address" },
+                    { text: "status", value: "status" },
+                    { text: "productId", value: "productId" },
+                    { text: "paymentStatus", value: "paymentStatus" },
                 ],
-            inventory : [],
+            pay : [],
             newValue: {},
             tick : true,
             openDialog : false,
@@ -83,15 +86,18 @@
                 return;
             }
 
-            var temp = await axios.get(axios.fixUrl('/inventories'))
-            temp.data._embedded.inventories.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
-            this.values = temp.data._embedded.inventories;
+            var temp = await axios.get(axios.fixUrl('/pays'))
+            temp.data._embedded.pays.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
+            this.values = temp.data._embedded.pays;
 
             this.newValue = {
                 'productName': '',
-                'stock': 0,
-                'regDate': '2024-09-23',
-                'expiredDate': '2024-09-23',
+                'qty': 0,
+                'orderId': 0,
+                'address': '',
+                'status': '',
+                'productId': 0,
+                'paymentStatus': '',
             }
         },
         methods: {
