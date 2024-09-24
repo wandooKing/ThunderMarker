@@ -16,17 +16,17 @@ spec:
     spec:
       containers:
         - name: order
-          image: "user05.azurecr.io/product:latest"
+          image: "user05.azurecr.io/order:latest"
           ports:
             - containerPort: 8080
           readinessProbe:
             httpGet:
               path: '/actuator/health'
               port: 8080
-            initialDelaySeconds: 10
-            timeoutSeconds: 2
-            periodSeconds: 5
-            failureThreshold: 10
+            initialDelaySeconds: 30  # 시작 후 30초 후에 프로브를 시작
+            periodSeconds: 10        # 프로브 주기: 10초
+            timeoutSeconds: 5        # 타임아웃: 5초
+            failureThreshold: 3      # 실패 횟수
           livenessProbe:
             httpGet:
               path: '/actuator/health'
