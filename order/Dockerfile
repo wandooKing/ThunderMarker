@@ -1,6 +1,5 @@
-FROM openjdk:15-jdk-alpine
+FROM openjdk:8u212-jdk-alpine
 COPY target/*SNAPSHOT.jar app.jar
+COPY src/main/resources/application-prod.yml application-prod.yml
 EXPOSE 8080
-ENV TZ=Asia/Seoul
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-ENTRYPOINT ["java","-Xmx400M","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar","--spring.profiles.active=docker"]
+ENTRYPOINT ["java","-Xmx400M","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar","--spring.profiles.active=docker","--spring.config.location=file:/application-prod.yml"]
